@@ -7,8 +7,6 @@ public class App {
     // Canvas es la ventana para graficar
     private Canvas miVentana;
     private Random aleatorio;
-    // Mas informacion sobre ArrayList en la API de Java
-    // API - Application Programming Interface
     //       Interface para Programacion de Aplicaciones
     // private ArrayList<Circulo> circulos;
     // private ArrayList<Rectangulo> rectangulos;
@@ -39,4 +37,7 @@ public class App {
         // miAplicacion.triangulos();
     }
 
+    public void ejecutar () {
+        // TODO - Implementar
+    }
 }
