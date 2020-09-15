@@ -21,6 +21,13 @@ public class Rectangulo extends FiguraGeometrica {
         // TODO implementar
     }
 
+    public double getPerimetro () {
+        return 0.0;
+    }
+
+    public double getSuperficie () {
+        return 0.0;
+    }
 
     public int getLado1() {
         return lado1;

@@ -10,6 +10,20 @@ public class Triangulo extends FiguraGeometrica {
         this.altura = altura;
     }
 
+    public Triangulo (int base, int altura, int x, int y) {
+        super(x, y);
+        this.base = base;
+        this.altura = altura;
+    }
+
+    public double getPerimetro () {
+        return 0.0;
+    }
+
+    public double getSuperficie () {
+        return base * altura / 2.0;
+    }
+
     public int getBase() {
         return base;
     }

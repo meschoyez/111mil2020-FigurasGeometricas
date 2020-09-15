@@ -16,6 +16,14 @@ public class Circulo extends FiguraGeometrica {
 
     // Constructor -> crear objetos de la clase
     public Circulo (int radio) {
+        // Llamado implicito al constructor de FiguraGeometrica
+        setRadio(radio);
+        determinarColor();
+    }
+
+    public Circulo (int radio, int x, int y) {
+        // super -> se usa para invocar acciones de la superclase
+        super(x, y);
         setRadio(radio);
         determinarColor();
     }
@@ -48,7 +56,7 @@ public class Circulo extends FiguraGeometrica {
     }
     
     public double getSuperficie () {
-        return 3.1416 * radio * radio;        
+        return 3.1416 * radio * radio;     
     }
 
     // setters y getters -> son metodos de acceso a los campos

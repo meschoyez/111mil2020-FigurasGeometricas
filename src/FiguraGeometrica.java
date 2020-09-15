@@ -1,9 +1,13 @@
 import java.awt.Color;
 
-public class FiguraGeometrica {
+// Clase abstracta -> no se puede instanciar
+//                    si puedo heredar de ella
+public abstract class FiguraGeometrica {
     private Color color ;
     private Posicion pos;
 
+    // Constructor - Sobrecargado para ofrecer
+    //               alternativas de inicializacion
     public FiguraGeometrica () {
         pos = new Posicion(0, 0);
     }
@@ -11,6 +15,20 @@ public class FiguraGeometrica {
     public FiguraGeometrica (int x, int y) {
         pos = new Posicion(x, y);
     }
+    
+    public FiguraGeometrica (int x, int y, Color color) {
+        this.color = color;
+        pos = new Posicion(x, y);
+    }
+    
+    public FiguraGeometrica (Posicion pos, Color color) {
+        this.color = color;
+        this.pos = pos;
+    }
+
+    // Metodos abstractos -> deben implementarlos las subclases
+    public abstract double getSuperficie ();
+    public abstract double getPerimetro ();
 
     public Color getColor() {
         return color;

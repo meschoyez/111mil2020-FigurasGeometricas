@@ -7,10 +7,12 @@ public class App {
     // Canvas es la ventana para graficar
     private Canvas miVentana;
     private Random aleatorio;
+    // Mas informacion sobre ArrayList en la API de Java
+    // API - Application Programming Interface
     //       Interface para Programacion de Aplicaciones
     // private ArrayList<Circulo> circulos;
     // private ArrayList<Rectangulo> rectangulos;
-    // private ArrayList<FiguraGeometrica> figuras;
+    private ArrayList<FiguraGeometrica> figuras;
     private int ancho = 800;
     private int alto = 600;
 
@@ -21,6 +23,7 @@ public class App {
         aleatorio = new Random();
         // circulos = new ArrayList<>();
         // rectangulos = new ArrayList<>();
+        figuras = new ArrayList<>();
         miVentana = new Canvas("Hola Ventana", ancho, alto);
         miVentana.setVisible(true);
     }
@@ -32,12 +35,66 @@ public class App {
      */
     public static void main(String[] args) throws Exception {
         App miAplicacion = new App();
-        // miAplicacion.ejecutar();
+        miAplicacion.ejecutar();
         // miAplicacion.imagenes();
         // miAplicacion.triangulos();
     }
 
     public void ejecutar () {
-        // TODO - Implementar
+        CrearFigurasAleatorias(5);
+        MostrarSuperficies();
     }
+
+    private void MostrarSuperficies() {
+        for (FiguraGeometrica f : figuras) {
+            // f -> tipo estatico FiguraGeometrica -> verifica el compilador
+            System.out.println(f.getSuperficie());
+            // dado el polimorfismo en la herencia
+            // en ejecucion -> f -> tipo dinamico -> verifica la JVM
+        }
+    }
+
+    /**
+     * Genera los objetos graficos en forma aleatoria y los agrega a la coleccion
+     * correspondiente
+     * 
+     * @param cantidad Cantidad de figuras a crear
+     */
+    public void CrearFigurasAleatorias (int cantidad) {
+        for (int c = 0; c < cantidad; c++) {
+            Circulo circulo = new Circulo (aleatorio.nextInt(91) + 10,
+                                           aleatorio.nextInt( getAncho() ),
+                                           aleatorio.nextInt( getAlto() ) );
+            circulo.getPos().setDespX( aleatorio.nextInt( 31 ) - 15 );
+            circulo.getPos().setDespY( aleatorio.nextInt( 31 ) - 15 );
+            // Lo agrego en la coleccion
+            // circulos.add(circulo);
+            figuras.add(circulo);
+            Triangulo triangulo = new Triangulo (aleatorio.nextInt(91) + 10,
+                                        aleatorio.nextInt(91) + 10,
+                                        aleatorio.nextInt( getAncho() ),
+                                        aleatorio.nextInt( getAlto() ) );
+            triangulo.getPos().setDespX( aleatorio.nextInt( 31 ) - 15 );
+            triangulo.getPos().setDespY( aleatorio.nextInt( 31 ) - 15 );
+            figuras.add(triangulo);
+            // TODO - Repetir lo mismo para Rectangulo
+        }
+    }
+
+    public int getAncho() {
+        return ancho;
+    }
+
+    public void setAncho(int ancho) {
+        this.ancho = ancho;
+    }
+
+    public int getAlto() {
+        return alto;
+    }
+
+    public void setAlto(int alto) {
+        this.alto = alto;
+    }
+
 }
