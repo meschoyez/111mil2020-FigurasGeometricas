@@ -10,9 +10,7 @@ public class App {
     // Mas informacion sobre ArrayList en la API de Java
     // API - Application Programming Interface
     //       Interface para Programacion de Aplicaciones
-    private ArrayList<Circulo> circulos;
-    private ArrayList<Triangulo> triangulos;
-    private ArrayList<Rectangulo> rectangulos;
+    private ArrayList<FiguraGeometrica> figuras;
     private int ancho = 800;
     private int alto = 600;
 
@@ -21,9 +19,7 @@ public class App {
      */
     public App () {
         aleatorio = new Random();
-        circulos = new ArrayList<>();
-        rectangulos = new ArrayList<>();
-        triangulos = new ArrayList<>();
+        figuras = new ArrayList<>();
         miVentana = new Canvas("Hola Ventana", ancho, alto);
         miVentana.setVisible(true);
     }
@@ -46,20 +42,14 @@ public class App {
     }
 
     private void MostrarSuperficies() {
-        for (Circulo f : circulos) {
-            // f -> tipo estatico FiguraGeometrica -> verifica el compilador
-            System.out.println(f.getSuperficie());
-            // dado el polimorfismo en la herencia
-            // en ejecucion -> f -> tipo dinamico -> verifica la JVM
-        }
-        for (Triangulo f : triangulos) {
+        for (FiguraGeometrica f : figuras) {
             // f -> tipo estatico FiguraGeometrica -> verifica el compilador
             System.out.println(f.getSuperficie());
             // dado el polimorfismo en la herencia
             // en ejecucion -> f -> tipo dinamico -> verifica la JVM
         }
     }
-
+    
     /**
      * Genera los objetos graficos en forma aleatoria y los agrega a la coleccion
      * correspondiente
@@ -76,14 +66,14 @@ public class App {
             circulo.getPos().setDespY( aleatorio.nextInt( 31 ) - 15 );
             // Lo agrego en la coleccion
             // circulos.add(circulo);
-            circulos.add(circulo);
+            figuras.add(circulo);
             Triangulo triangulo = new Triangulo (aleatorio.nextInt(91) + 10,
                                         aleatorio.nextInt(91) + 10,
                                         aleatorio.nextInt( getAncho() ),
                                         aleatorio.nextInt( getAlto() ) );
             triangulo.getPos().setDespX( aleatorio.nextInt( 31 ) - 15 );
             triangulo.getPos().setDespY( aleatorio.nextInt( 31 ) - 15 );
-            triangulos.add(triangulo);
+            figuras.add(triangulo);
             // TODO - Repetir lo mismo para Rectangulo
         }
     }
